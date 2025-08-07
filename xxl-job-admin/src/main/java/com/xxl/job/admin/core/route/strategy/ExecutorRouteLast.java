@@ -12,7 +12,7 @@ import java.util.List;
 public class ExecutorRouteLast extends ExecutorRouter {
 
     @Override
-    public ReturnT<String> route(TriggerParam triggerParam, List<String> addressList) {
+    public ReturnT<String> route(TriggerParam triggerParam, List<String> addressList,String accessToken) {
         return new ReturnT<String>(addressList.get(addressList.size()-1));
     }
 

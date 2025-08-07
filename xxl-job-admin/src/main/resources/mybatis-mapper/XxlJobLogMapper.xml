@@ -8,6 +8,7 @@
 
 		<result column="job_group" property="jobGroup" />
 		<result column="job_id" property="jobId" />
+		<result column="job_desc" property="jobDesc" />
 
 		<result column="executor_address" property="executorAddress" />
 		<result column="executor_handler" property="executorHandler" />
@@ -30,6 +31,7 @@
 		t.id,
 		t.job_group,
 		t.job_id,
+		t.job_desc,
 		t.executor_address,
 		t.executor_handler,
 		t.executor_param,
@@ -116,17 +118,18 @@
 		WHERE t.id = #{id}
 	</select>
 
-	
 	<insert id="save" parameterType="com.xxl.job.admin.core.model.XxlJobLog" useGeneratedKeys="true" keyProperty="id" >
 		INSERT INTO xxl_job_log (
 			`job_group`,
 			`job_id`,
+		    `job_desc`,
 			`trigger_time`,
 			`trigger_code`,
 			`handle_code`
 		) VALUES (
 			#{jobGroup},
 			#{jobId},
+		    #{jobDesc},
 			#{triggerTime},
 			#{triggerCode},
 			#{handleCode}
@@ -178,9 +181,9 @@
 
     <select id="findLogReport" resultType="java.util.Map" >
 		SELECT
-			COUNT(handle_code) `triggerDayCount`,
-			SUM(CASE WHEN (trigger_code in (0, 200) and handle_code = 0) then 1 else 0 end) as `triggerDayCountRunning`,
-			SUM(CASE WHEN handle_code = 200 then 1 else 0 end) as `triggerDayCountSuc`
+			COUNT(handle_code) triggerDayCount,
+			SUM(CASE WHEN (trigger_code in (0, 200) and handle_code = 0) then 1 else 0 end) as triggerDayCountRunning,
+			SUM(CASE WHEN handle_code = 200 then 1 else 0 end) as triggerDayCountSuc
 		FROM xxl_job_log
 		WHERE trigger_time BETWEEN #{from} and #{to}
     </select>

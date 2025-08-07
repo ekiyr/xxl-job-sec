@@ -9,7 +9,7 @@ public class TriggerParam implements Serializable{
     private static final long serialVersionUID = 42L;
 
     private int jobId;
-
+    private String jobGroup;
     private String executorHandler;
     private String executorParams;
     private String executorBlockStrategy;
@@ -32,6 +32,14 @@ public class TriggerParam implements Serializable{
 
     public void setJobId(int jobId) {
         this.jobId = jobId;
+    }
+
+    public String getJobGroup() {
+        return jobGroup;
+    }
+
+    public void setJobGroup(String jobGroup) {
+        this.jobGroup = jobGroup;
     }
 
     public String getExecutorHandler() {

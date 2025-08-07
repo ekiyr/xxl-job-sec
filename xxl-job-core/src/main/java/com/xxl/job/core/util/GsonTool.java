@@ -85,4 +85,7 @@ public class GsonTool {
         );
     }
 
+    public static Gson getGson() {
+        return gson;
+    }
 }

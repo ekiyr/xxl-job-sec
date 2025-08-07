@@ -5,6 +5,7 @@ import com.xxl.job.core.biz.model.HandleCallbackParam;
 import com.xxl.job.core.biz.model.RegistryParam;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.util.XxlJobRemotingUtil;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -17,37 +18,46 @@ public class AdminBizClient implements AdminBiz {
 
     public AdminBizClient() {
     }
-    public AdminBizClient(String addressUrl, String accessToken, int timeout) {
+    public AdminBizClient(String addressUrl, String accessToken) {
         this.addressUrl = addressUrl;
         this.accessToken = accessToken;
-        this.timeout = timeout;
 
         // valid
         if (!this.addressUrl.endsWith("/")) {
             this.addressUrl = this.addressUrl + "/";
         }
-        if (!(this.timeout >=1 && this.timeout <= 10)) {
-            this.timeout = 3;
-        }
     }
 
     private String addressUrl ;
     private String accessToken;
-    private int timeout;
+    private int timeout = 5;
 
 
     @Override
     public ReturnT<String> callback(List<HandleCallbackParam> callbackParamList) {
+        if(null == callbackParamList || callbackParamList.isEmpty()){
+            return ReturnT.FAIL;
+        }
+        HandleCallbackParam handleCallbackParam = callbackParamList.get(0);
+        if(StringUtils.hasText(handleCallbackParam.getJobGroup())){
+            return XxlJobRemotingUtil.postBody(addressUrl+"api/"+handleCallbackParam.getJobGroup()+"/callback", accessToken, timeout, callbackParamList, String.class);
+        }
         return XxlJobRemotingUtil.postBody(addressUrl+"api/callback", accessToken, timeout, callbackParamList, String.class);
     }
 
     @Override
     public ReturnT<String> registry(RegistryParam registryParam) {
+        if(StringUtils.hasText(registryParam.getRegistryKey())){
+            return XxlJobRemotingUtil.postBody(addressUrl+"api/"+registryParam.getRegistryKey()+"/registry", accessToken, timeout, registryParam, String.class);
+        }
         return XxlJobRemotingUtil.postBody(addressUrl + "api/registry", accessToken, timeout, registryParam, String.class);
     }
 
     @Override
     public ReturnT<String> registryRemove(RegistryParam registryParam) {
+        if(StringUtils.hasText(registryParam.getRegistryKey())){
+            return XxlJobRemotingUtil.postBody(addressUrl+"api/"+registryParam.getRegistryKey()+"/registryRemove", accessToken, timeout, registryParam, String.class);
+        }
         return XxlJobRemotingUtil.postBody(addressUrl + "api/registryRemove", accessToken, timeout, registryParam, String.class);
     }
 

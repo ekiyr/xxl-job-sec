@@ -8,6 +8,8 @@ import java.io.Serializable;
 public class HandleCallbackParam implements Serializable {
     private static final long serialVersionUID = 42L;
 
+    private String jobGroup;
+
     private long logId;
     private long logDateTim;
 
@@ -20,6 +22,22 @@ public class HandleCallbackParam implements Serializable {
         this.logDateTim = logDateTim;
         this.handleCode = handleCode;
         this.handleMsg = handleMsg;
+    }
+
+    public HandleCallbackParam(String jobGroup,long logId, long logDateTim, int handleCode, String handleMsg) {
+        this.jobGroup = jobGroup;
+        this.logId = logId;
+        this.logDateTim = logDateTim;
+        this.handleCode = handleCode;
+        this.handleMsg = handleMsg;
+    }
+
+    public String getJobGroup() {
+        return jobGroup;
+    }
+
+    public void setJobGroup(String jobGroup) {
+        this.jobGroup = jobGroup;
     }
 
     public long getLogId() {

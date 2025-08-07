@@ -24,6 +24,8 @@ public class DateUtil {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
+    private static final String DATETIME_FORMAT_MS = "yyyy-MM-dd HH:mm:ss SSS";
+
     private static final ThreadLocal<Map<String, DateFormat>> dateFormatThreadLocal = new ThreadLocal<Map<String, DateFormat>>();
     private static DateFormat getDateFormat(String pattern) {
         if (pattern==null || pattern.trim().length()==0) {
@@ -66,6 +68,16 @@ public class DateUtil {
      */
     public static String formatDateTime(Date date) {
         return format(date, DATETIME_FORMAT);
+    }
+    /**
+     * format date. like "yyyy-MM-dd HH:mm:ss"
+     *
+     * @param date
+     * @return
+     * @throws ParseException
+     */
+    public static String formatDateTimeWithms(Date date) {
+        return format(date, DATETIME_FORMAT_MS);
     }
 
     /**

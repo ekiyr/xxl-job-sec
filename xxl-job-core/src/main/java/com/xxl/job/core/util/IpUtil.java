@@ -134,8 +134,7 @@ public class IpUtil {
         } catch (Throwable e) {
             logger.error(e.getMessage(), e);
         }
-
-        // 2、getLocalAddress
+        //2、getLocalAddress
         try {
             localAddress = InetAddress.getLocalHost();
             InetAddress addressItem = toValidAddress(localAddress);
@@ -145,7 +144,6 @@ public class IpUtil {
         } catch (Throwable e) {
             logger.error(e.getMessage(), e);
         }
-
         return localAddress;
     }
 

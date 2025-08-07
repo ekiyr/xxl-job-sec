@@ -29,7 +29,7 @@ public class NetUtil {
                 portTmp++;
             }
         }
-        portTmp = defaultPort - 1;
+        portTmp = defaultPort--;
         while (portTmp > 0) {
             if (!isPortUsed(portTmp)) {
                 return portTmp;

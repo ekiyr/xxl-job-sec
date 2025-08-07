@@ -1,7 +1,7 @@
 ## 《分布式任务调度平台XXL-JOB》
 
 [![Actions Status](https://github.com/xuxueli/xxl-job/workflows/Java%20CI/badge.svg)](https://github.com/xuxueli/xxl-job/actions)
-[![Maven Central](https://img.shields.io/maven-central/v/com.xuxueli/xxl-job-core)](https://central.sonatype.com/artifact/com.xuxueli/xxl-job-core)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.xuxueli/xxl-job/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.xuxueli/xxl-job/)
 [![GitHub release](https://img.shields.io/github/release/xuxueli/xxl-job.svg)](https://github.com/xuxueli/xxl-job/releases)
 [![GitHub stars](https://img.shields.io/github/stars/xuxueli/xxl-job)](https://github.com/xuxueli/xxl-job/)
 [![Docker Status](https://img.shields.io/docker/pulls/xuxueli/xxl-job-admin)](https://hub.docker.com/r/xuxueli/xxl-job-admin/)
@@ -17,7 +17,7 @@
 ### 1.1 概述
 XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。
 
-### 1.2 社区交流
+### 1.2 社区交流    
 - [社区交流](https://www.xuxueli.com/page/community.html)
 
 ### 1.3 特性
@@ -51,13 +51,12 @@ XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅�
 - 28、推送maven中央仓库: 将会把最新稳定版推送到maven中央仓库, 方便用户接入和使用;
 - 29、运行报表：支持实时查看运行数据，如任务数量、调度次数、执行器数量等；以及调度报表，如调度日期分布图，调度成功分布图等；
 - 30、全异步：任务调度流程全异步化设计实现，如异步调度、异步运行、异步回调等，有效对密集调度进行流量削峰，理论上支持任意时长任务的运行；
-- 31、跨语言/OpenAPI：调度中心与执行器提供语言无关的 OpenApi（RESTful 格式），第三方任意语言可据此对接调度中心或者实现执行器，实现多语言支持。除此之外，还提供了 “多任务模式”和“httpJobHandler”等其他跨语言方案；
+- 31、跨语言：调度中心与执行器提供语言无关的 RESTful API 服务，第三方任意语言可据此对接调度中心或者实现执行器。除此之外，还提供了 “多任务模式”和“httpJobHandler”等其他跨语言方案；
 - 32、国际化：调度中心支持国际化设置，提供中文、英文两种可选语言，默认为中文；
 - 33、容器化：提供官方docker镜像，并实时更新推送dockerhub，进一步实现产品开箱即用；
 - 34、线程池隔离：调度线程池进行隔离拆分，慢任务自动降级进入"Slow"线程池，避免耗尽调度线程，提高系统稳定性；
 - 35、用户管理：支持在线管理系统用户，存在管理员、普通用户两种角色；
 - 36、权限控制：执行器维度进行权限控制，管理员拥有全量权限，普通用户需要分配执行器权限后才允许相关操作；
-- 37、AI任务：原生提供AI执行器，并内置多个AI任务Handler，与spring-ai、ollama、dify等集成打通，支持快速开发AI类任务。
 
 ### 1.4 发展
 于2015年中，我在github上创建XXL-JOB项目仓库并提交第一个commit，随之进行系统结构设计，UI选型，交互设计……
@@ -749,45 +748,6 @@ XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅�
     - 652、福建福昕软件开发股份有限公司【福昕】
     - 653、广州中长康达信息技术有限公司
     - 654、武汉趣改信息科技有限公司
-    - 655、北京华夏思源科技发展有限公司
-    - 656、宁波关关通科技有限公司
-    - 657、青岛吕氏餐饮有限公司
-    - 658、杭州乐刻网络科技有限公司
-    - 659、上海红瓦信息科技有限公司
-    - 660、陕西旅小宝信息科技有限公司
-    - 661、中科卓恒(大连)科技有限公司
-    - 662、北京华益精点生物技术有限公司
-    - 663、马士基（中国）航运有限公司【马士基】
-    - 664、陕西美咚网络科技有限公司
-    - 665、山东新北洋信息技术股份有限公司 
-    - 666、福建中瑞文化发展集团有限公司
-    - 667、黑龙江省建工集团有限责任公司【黑龙江省建工】
-    - 668、志信能达安全科技(广州)有限公司
-    - 669、重庆开源共创科技有限公司
-    - 670、华泰人寿保险股份有限公司【华泰人寿】
-    - 671、成都盘古纵横集团
-    - 672、北京果果乐学科技有限公司
-    - 673、北京凌云空间科技有限公司
-    - 674、临工重机股份有限公司
-    - 675、上海热风时尚管理集团【热风】
-    - 676、HashKey Exchange
-    - 677、傲基（深圳）跨境商务股份有限公司
-    - 678、青岛文达通科技股份有限公司
-    - 679、杭州普罗云科技有限公司
-    - 680、浙江云鹭科技有限公司
-    - 681、中山市芯宏柿网络科技有限公司
-    - 682、深圳市家家顺物联科技
-    - 683、重庆斑西科技有限公司
-    - 684、福建省泰古信息技术有限公司
-    - 685、贵阳永青仪电科技有限公司
-    - 686、广州博依特智能信息科技有限公司
-    - 687、河南宠呦呦信息技术有限公司
-    - 688、陕西星邑空间技术有限公司
-    - 689、广东西欧克实业有限公司
-    - 690、唱吧麦颂KTV
-    - 691、联通云
-    - 692、北京爱话本科技有限公司
-    - 693、北京起创科技有限公司
     - ……
 
 > 更多接入的公司，欢迎在 [登记地址](https://github.com/xuxueli/xxl-job/issues/1 ) 登记，登记仅仅为了产品推广。
@@ -808,7 +768,6 @@ XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅�
 --- | ---
 [https://github.com/xuxueli/xxl-job](https://github.com/xuxueli/xxl-job) | [Download](https://github.com/xuxueli/xxl-job/releases)  
 [http://gitee.com/xuxueli0323/xxl-job](http://gitee.com/xuxueli0323/xxl-job) | [Download](http://gitee.com/xuxueli0323/xxl-job/releases)
-[https://gitcode.com/xuxueli/xxl-job](https://gitcode.com/xuxueli/xxl-job) | [Download](https://gitcode.com/xuxueli/xxl-job/tags)
 
 
 #### 中央仓库地址
@@ -825,7 +784,7 @@ XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅�
 
 ### 1.6 环境
 - Maven3+
-- Jdk17+ (说明：版本3.x开始要求Jdk17；版本2.x及以下支持Jdk1.8。如对Jdk版本有诉求，可选择接入不同版本。)
+- Jdk1.8+
 - Mysql8.0+
 
 
@@ -850,7 +809,7 @@ XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅�
     xxl-job-executor-samples：执行器Sample示例（选择合适的版本执行器，可直接使用，也可以参考其并将现有项目改造成执行器）
         ：xxl-job-executor-sample-springboot：Springboot版本，通过Springboot管理执行器，推荐这种方式；
         ：xxl-job-executor-sample-frameless：无框架版本；
-
+        
 
 ### 2.3 配置部署“调度中心”
 
@@ -860,46 +819,41 @@ XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅�
 #### 步骤一：调度中心配置：
 调度中心配置文件地址：
 
-```
-/xxl-job/xxl-job-admin/src/main/resources/application.properties
-```
+    /xxl-job/xxl-job-admin/src/main/resources/application.properties
+
 
 调度中心配置内容说明：
 
-```
-### 调度中心JDBC链接：链接地址请保持和 2.1章节 所创建的调度数据库的地址一致
-spring.datasource.url=jdbc:mysql://127.0.0.1:3306/xxl_job?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
-spring.datasource.username=root
-spring.datasource.password=root_pwd
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-
-### 报警邮箱
-spring.mail.host=smtp.qq.com
-spring.mail.port=25
-spring.mail.username=xxx@qq.com
-spring.mail.password=xxx
-spring.mail.properties.mail.smtp.auth=true
-spring.mail.properties.mail.smtp.starttls.enable=true
-spring.mail.properties.mail.smtp.starttls.required=true
-spring.mail.properties.mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
-
-### 调度中心通讯TOKEN [选填]：非空时启用；
-xxl.job.accessToken=
-
-### 调度中心通讯超时时间[选填]，单位秒；默认3s；
-xxl.job.timeout=3
-
-### 调度中心国际化配置 [必填]： 默认为 "zh_CN"/中文简体, 可选范围为 "zh_CN"/中文简体, "zh_TC"/中文繁体 and "en"/英文；
-xxl.job.i18n=zh_CN
-
-## 调度线程池最大线程配置【必填】
-xxl.job.triggerpool.fast.max=200
-xxl.job.triggerpool.slow.max=100
-
-### 调度中心日志表数据保存天数 [必填]：过期日志自动清理；限制大于等于7时生效，否则, 如-1，关闭自动清理功能；
-xxl.job.logretentiondays=30
-```
-
+    ### 调度中心JDBC链接：链接地址请保持和 2.1章节 所创建的调度数据库的地址一致
+    spring.datasource.url=jdbc:mysql://127.0.0.1:3306/xxl_job?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    spring.datasource.username=root
+    spring.datasource.password=root_pwd
+    spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+    
+    ### 报警邮箱
+    spring.mail.host=smtp.qq.com
+    spring.mail.port=25
+    spring.mail.username=xxx@qq.com
+    spring.mail.password=xxx
+    spring.mail.properties.mail.smtp.auth=true
+    spring.mail.properties.mail.smtp.starttls.enable=true
+    spring.mail.properties.mail.smtp.starttls.required=true
+    spring.mail.properties.mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+    
+    ### 调度中心通讯TOKEN [选填]：非空时启用；
+    xxl.job.accessToken=
+    
+    ### 调度中心国际化配置 [必填]： 默认为 "zh_CN"/中文简体, 可选范围为 "zh_CN"/中文简体, "zh_TC"/中文繁体 and "en"/英文；
+    xxl.job.i18n=zh_CN
+    
+    ## 调度线程池最大线程配置【必填】
+    xxl.job.triggerpool.fast.max=200
+    xxl.job.triggerpool.slow.max=100
+    
+    ### 调度中心日志表数据保存天数 [必填]：过期日志自动清理；限制大于等于7时生效，否则, 如-1，关闭自动清理功能；
+    xxl.job.logretentiondays=30
+    
+    
 
 #### 步骤二：部署项目：
 如果已经正确进行上述配置，可将项目编译打包部署。
@@ -946,42 +900,36 @@ docker run -e PARAMS="--spring.datasource.url=jdbc:mysql://127.0.0.1:3306/xxl_jo
 
     “执行器”项目：xxl-job-executor-sample-springboot (提供多种版本执行器供选择，现以 springboot 版本为例，可直接使用，也可以参考其并将现有项目改造成执行器)
     作用：负责接收“调度中心”的调度并执行；可直接部署执行器，也可以将执行器集成到现有业务项目中。
-
+    
 #### 步骤一：maven依赖
 确认pom文件中引入了 "xxl-job-core" 的maven依赖；
-
+    
 #### 步骤二：执行器配置
 执行器配置，配置文件地址：
 
-```
-/xxl-job/xxl-job-executor-samples/xxl-job-executor-sample-springboot/src/main/resources/application.properties
-```
+    /xxl-job/xxl-job-executor-samples/xxl-job-executor-sample-springboot/src/main/resources/application.properties
 
 执行器配置，配置内容说明：
 
-```
-### 调度中心部署根地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
-xxl.job.admin.addresses=http://127.0.0.1:8080/xxl-job-admin
-
-### 调度中心通讯TOKEN [选填]：非空时启用；
-xxl.job.admin.accessToken=default_token
-
-### 调度中心通讯超时时间[选填]，单位秒；默认3s；
-xxl.job.admin.timeout=3
-
-### 执行器AppName [选填]：执行器心跳注册分组依据；为空则关闭自动注册
-xxl.job.executor.appname=xxl-job-executor-sample
-### 执行器注册 [选填]：优先使用该配置作为注册地址，为空时使用内嵌服务 ”IP:PORT“ 作为注册地址。从而更灵活的支持容器类型执行器动态IP和动态映射端口问题。
-xxl.job.executor.address=
-### 执行器IP [选填]：默认为空表示自动获取IP，多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯使用；地址信息用于 "执行器注册" 和 "调度中心请求并触发任务"；
-xxl.job.executor.ip=
-### 执行器端口号 [选填]：小于等于0则自动获取；默认端口为9999，单机部署多个执行器时，注意要配置不同执行器端口；
-xxl.job.executor.port=9999
-### 执行器运行日志文件存储磁盘路径 [选填] ：需要对该路径拥有读写权限；为空则使用默认路径；
-xxl.job.executor.logpath=/data/applogs/xxl-job/jobhandler
-### 执行器日志文件保存天数 [选填] ： 过期日志自动清理, 限制值大于等于3时生效; 否则, 如-1, 关闭自动清理功能；
-xxl.job.executor.logretentiondays=30
-```
+    ### 调度中心部署根地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
+    xxl.job.admin.addresses=http://127.0.0.1:8080/xxl-job-admin
+    
+    ### 执行器通讯TOKEN [选填]：非空时启用；
+    xxl.job.accessToken=
+    
+    ### 执行器AppName [选填]：执行器心跳注册分组依据；为空则关闭自动注册
+    xxl.job.executor.appname=xxl-job-executor-sample
+    ### 执行器注册 [选填]：优先使用该配置作为注册地址，为空时使用内嵌服务 ”IP:PORT“ 作为注册地址。从而更灵活的支持容器类型执行器动态IP和动态映射端口问题。
+    xxl.job.executor.address=
+    ### 执行器IP [选填]：默认为空表示自动获取IP，多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯实用；地址信息用于 "执行器注册" 和 "调度中心请求并触发任务"；
+    xxl.job.executor.ip=
+    ### 执行器端口号 [选填]：小于等于0则自动获取；默认端口为9999，单机部署多个执行器时，注意要配置不同执行器端口；
+    xxl.job.executor.port=9999
+    ### 执行器运行日志文件存储磁盘路径 [选填] ：需要对该路径拥有读写权限；为空则使用默认路径；
+    xxl.job.executor.logpath=/data/applogs/xxl-job/jobhandler
+    ### 执行器日志文件保存天数 [选填] ： 过期日志自动清理, 限制值大于等于3时生效; 否则, 如-1, 关闭自动清理功能；
+    xxl.job.executor.logretentiondays=30
+    
 
 #### 步骤三：执行器组件配置
 
@@ -1013,7 +961,7 @@ public XxlJobSpringExecutor xxlJobExecutor() {
 
     xxl-job-executor-sample-springboot：项目编译打包成springboot类型的可执行JAR包，命令启动即可；
     xxl-job-executor-sample-frameless：项目编译打包成JAR包，命令启动即可；
-
+    
 
 至此“执行器”项目已经部署结束。
 
@@ -1021,11 +969,11 @@ public XxlJobSpringExecutor xxlJobExecutor() {
 执行器支持集群部署，提升调度系统可用性，同时提升任务处理能力。
 
 执行器集群部署时，几点要求和建议：
-- 执行器回调地址（xxl.job.admin.addresses）需要保持一致；执行器根据该配置进行执行器自动注册等操作。
+- 执行器回调地址（xxl.job.admin.addresses）需要保持一致；执行器根据该配置进行执行器自动注册等操作。 
 - 同一个执行器集群内AppName（xxl.job.executor.appname）需要保持一致；调度中心根据该配置动态发现不同集群的在线执行器列表。
 
 
-### 2.5 开发第一个任务“Hello World”
+### 2.5 开发第一个任务“Hello World”       
 本示例以新建一个 “GLUE模式(Java)” 运行模式的任务为例。更多有关任务的详细配置，请查看“章节三：任务详解”。
 （ “GLUE模式(Java)”的执行代码托管到调度中心在线维护，相比“Bean模式任务”需要在执行器项目开发部署上线，更加简便轻量）
 
@@ -1040,7 +988,7 @@ public XxlJobSpringExecutor xxlJobExecutor() {
 
 
 #### 步骤二：“GLUE模式(Java)” 任务开发：
-请点击任务右侧 “GLUE IDE” 按钮，进入 “GLUE编辑器开发界面” ，见下图。“GLUE模式(Java)” 运行模式的任务默认已经初始化了示例任务代码，即打印Hello World。
+请点击任务右侧 “GLUE” 按钮，进入 “GLUE编辑器开发界面” ，见下图。“GLUE模式(Java)” 运行模式的任务默认已经初始化了示例任务代码，即打印Hello World。
 （ “GLUE模式(Java)” 运行模式的任务实际上是一段继承自IJobHandler的Java类代码，它在执行器项目中运行，可使用@Resource/@Autowire注入执行器里中的其他服务，详细介绍请查看第三章节）
 
 ![输入图片说明](https://www.xuxueli.com/doc/static/xxl-job/images/img_Fgql.png "在这里输入图片标题")
@@ -1050,7 +998,7 @@ public XxlJobSpringExecutor xxlJobExecutor() {
 #### 步骤三：触发执行：
 请点击任务右侧 “执行” 按钮，可手动触发一次任务执行（通常情况下，通过配置Cron表达式进行任务调度触发）。
 
-#### 步骤四：查看日志：
+#### 步骤四：查看日志： 
 请点击任务右侧 “日志” 按钮，可前往任务日志界面查看任务日志。
 在任务日志界面中，可查看该任务的历史调度记录以及每一次调度的任务调度信息、执行参数和执行信息。运行中的任务点击右侧的“执行日志”按钮，可进入日志控制台查看实时执行日志。
 
@@ -1059,7 +1007,6 @@ public XxlJobSpringExecutor xxlJobExecutor() {
 在日志控制台，可以Rolling方式实时查看任务在执行器一侧运行输出的日志信息，实时监控任务进度；
 
 ![输入图片说明](https://www.xuxueli.com/doc/static/xxl-job/images/img_eYrv.png "在这里输入图片标题")
-
 
 ## 三、任务详解
 
@@ -1090,7 +1037,7 @@ public XxlJobSpringExecutor xxlJobExecutor() {
             GLUE模式(PHP)：任务以源码方式维护在调度中心；该模式的任务实际上是一段 "php" 脚本；
             GLUE模式(NodeJS)：任务以源码方式维护在调度中心；该模式的任务实际上是一段 "nodejs" 脚本；
             GLUE模式(PowerShell)：任务以源码方式维护在调度中心；该模式的任务实际上是一段 "PowerShell" 脚本；
-        - JobHandler：运行模式为 "BEAN模式" 时生效，对应执行器中新开发的JobHandler类“@XxlJob”注解自定义的value值；
+        - JobHandler：运行模式为 "BEAN模式" 时生效，对应执行器中新开发的JobHandler类“@JobHandler”注解自定义的value值；
         - 执行参数：任务执行所需的参数；     
         
     高级配置：
@@ -1115,11 +1062,11 @@ public XxlJobSpringExecutor xxlJobExecutor() {
             覆盖之前调度：调度请求进入单机执行器后，发现执行器存在运行的调度任务，将会终止运行中的调度任务并清空队列，然后运行本地调度任务；
         - 任务超时时间：支持自定义任务超时时间，任务运行超时将会主动中断任务；
         - 失败重试次数；支持自定义任务失败重试次数，当任务失败时将会按照预设的失败重试次数主动进行重试；
+    
+    
+    
 
-
-
-
-
+    
 ### 3.1 BEAN模式（类形式）
 
 Bean模式任务，支持基于类的开发方式，每个任务对应一个Java类。
@@ -1158,7 +1105,7 @@ Bean模式任务，支持基于方法的开发方式，每个任务对应一个�
     2、注解配置：为Job方法添加注解 "@XxlJob(value="自定义jobhandler名称", init = "JobHandler初始化方法", destroy = "JobHandler销毁方法")"，注解value值对应的是调度中心新建任务的JobHandler属性的值。
     3、执行日志：需要通过 "XxlJobHelper.log" 打印执行日志；
     4、任务结果：默认任务结果为 "成功" 状态，不需要主动设置；如有诉求，比如设置任务结果为失败，可以通过 "XxlJobHelper.handleFail/handleSuccess" 自主设置任务结果；
-
+    
 ```
 // 可参考Sample示例执行器中的 "com.xxl.job.executor.service.jobhandler.SampleXxlJob" ，如下：
 @XxlJob("demoJobHandler")
@@ -1172,73 +1119,18 @@ public void demoJobHandler() throws Exception {
 
 ![输入图片说明](https://www.xuxueli.com/doc/static/xxl-job/images/img_ZAsz.png "在这里输入图片标题")
 
-#### 原生内置Bean模式任务（通用执行器）
-为方便用户参考与快速使用，提供 “通用执行器” 并内置多个Bean模式任务Handler，可以直接配置使用，如下：
+#### 原生内置Bean模式任务
+为方便用户参考与快速实用，示例执行器内原生提供多个Bean模式任务Handler，可以直接配置实用，如下：
 
-**通用执行器说明：**
-- AppName：xxl-job-executor-sample
-- 执行器代码：
-  - xxl-job-executor-sample-springboot：springboot版本
-  - xxl-job-executor-sample-frameless：无框架版本
-
-**执行器内置任务列表：**
-- a、demoJobHandler：简单示例任务，任务内部模拟耗时任务逻辑，用户可在线体验Rolling Log等功能；
-- b、shardingJobHandler：分片示例任务，任务内部模拟处理分片参数，可参考熟悉分片任务；
-- c、httpJobHandler：通用HTTP任务Handler；业务方只需要提供HTTP链接等信息即可，不限制语言、平台。示例任务入参如下：
-```
-{
-    "url": "http://www.baidu.com",
-    "method": "get",
-    "data": "hello world"
-}
-```
-- d、commandJobHandler：通用命令行任务Handler；业务方只需要提供命令行即可，命令及参数之间通过空格隔开；如任务参数 "ls la" 或 "pwd" 将会执行命令并输出数据；
-
-#### 原生内置Bean模式任务（AI执行器）
-为方便用户参考与快速使用，提供 “AI执行器” 并内置多个Bean模式 AI任务Handler，与spring-ai、ollama、dify等集成打通，支持快速开发AI类任务，如下：
-
-**AI执行器说明：**
-- AppName：xxl-job-executor-sample-ai
-- 执行器代码：xxl-job-executor-sample-springboot-ai
-
-**执行器内置任务列表：**
-- a、ollamaJobHandler： OllamaChat任务，支持自定义prompt、input等输入信息。示例任务入参如下：
-```
-{
-    "input": "{输入信息，必填信息}",
-    "prompt": "{模型prompt，可选信息}"
-}
-```
-- b、difyWorkflowJobHandler：DifyWorkflow 任务，支持自定义inputs、user、baseUrl、apiKey 等输入信息，示例参数如下；
-```
-{
-    "inputs":{                          // inputs 为dify工作流任务参数；参数不固定，结合各自 workflow 自行定义。
-        "input":"{用户输入信息}"          // 该参数为示例变量，需要 workflow 的“开始”节点 自定义参数 “input”，可自行调整或删除。
-    },
-    "user": "xxl-job",                  // 用户标识，选填
-    "baseUrl": "http://localhost/v1",   // Dify应用的 访问API 地址，需要从 Dify 系统获取；
-    "apiKey": "xxx"                     // Dify应用的 API-Key，需要从 Dify 系统获取；
-}
-```
-
-- 依赖1：参考 [Ollama本地化部署大模型](https://www.xuxueli.com/blog/?blog=./notebook/13-AI/%E4%BD%BF%E7%94%A8Ollama%E6%9C%AC%E5%9C%B0%E5%8C%96%E9%83%A8%E7%BD%B2DeepSeek.md) ，执行器示例部署“qwen2.5:1.5b”模型，也可自定选择其他模型版本。
-- 依赖2：参考 [使用DeepSeek与Dify搭建AI助手](https://www.xuxueli.com/blog/?blog=./notebook/13-AI/%E4%BD%BF%E7%94%A8DeepSeek%E4%B8%8EDify%E6%90%AD%E5%BB%BAAI%E5%8A%A9%E6%89%8B.md)，执行器示例新建Dify DifyWork应用，并在开始节点添加“input”参数，可结合实际情况调整。
-- 依赖3：启动示例 “AI执行器” 相关配置文件说明如下：
-
-```
-// ollama 配置
-spring.ai.ollama.base-url=http://localhost:11434
-spring.ai.ollama.chat.enabled=true
-// Model模型配置；注意，此处配置模型版本、必须本地先通过ollama进行安装运行。
-spring.ai.ollama.chat.options.model=qwen2.5:1.5b
-spring.ai.ollama.chat.options.temperature=0.8
-
-// dify 配置；选择相关 workflow 应用，切换 “访问API” 页面获取 url 地址信息.
-dify.base-url=http://localhost/v1
-// dify api-key；选择相关 workflow 应用并进入 “访问API” 页面，右上角 “API 密钥” 入口获取 api-key。
-dify.api-key={自行获取并修改}
-
-```
+- demoJobHandler：简单示例任务，任务内部模拟耗时任务逻辑，用户可在线体验Rolling Log等功能；
+- shardingJobHandler：分片示例任务，任务内部模拟处理分片参数，可参考熟悉分片任务；
+- httpJobHandler：通用HTTP任务Handler；业务方只需要提供HTTP链接等信息即可，不限制语言、平台。示例任务入参如下：
+    ```
+    url: http://www.xxx.com
+    method: get 或 post
+    data: post-data
+    ```
+- commandJobHandler：通用命令行任务Handler；业务方只需要提供命令行即可；如 “pwd”命令；
 
 
 ### 3.3 GLUE模式(Java)
@@ -1258,7 +1150,7 @@ dify.api-key={自行获取并修改}
 
 ### 3.4 GLUE模式(Shell)
 
-#### 步骤一：调度中心，新建调度任务
+#### 步骤一：调度中心，新建调度任务   
 参考上文“配置属性详细说明”对新建的任务进行参数配置，运行模式选中 "GLUE模式(Shell)"；
 
 #### 步骤二：开发任务代码：
@@ -1270,7 +1162,7 @@ dify.api-key={自行获取并修改}
 
 ### 3.4 GLUE模式(Python)
 
-#### 步骤一：调度中心，新建调度任务
+#### 步骤一：调度中心，新建调度任务   
 参考上文“配置属性详细说明”对新建的任务进行参数配置，运行模式选中 "GLUE模式(Python)"；
 
 #### 步骤二：开发任务代码：
@@ -1282,7 +1174,7 @@ dify.api-key={自行获取并修改}
 
 ### 3.5 GLUE模式(NodeJS)
 
-#### 步骤一：调度中心，新建调度任务
+#### 步骤一：调度中心，新建调度任务   
 参考上文“配置属性详细说明”对新建的任务进行参数配置，运行模式选中 "GLUE模式(NodeJS)"；
 
 #### 步骤二：开发任务代码：
@@ -1319,7 +1211,7 @@ dify.api-key={自行获取并修改}
     注册方式：调度中心获取执行器地址的方式；
         自动注册：执行器自动进行执行器注册，调度中心通过底层注册表可以动态发现执行器机器地址；
         手动录入：人工手动录入执行器的地址信息，多地址逗号分隔，供调度中心使用；
-    机器地址："注册方式"为"手动录入"时有效，支持人工维护执行器的地址信息；注册地址格式可参考“http://127.0.0.1:9999/”，为执行器内嵌服务地址；
+    机器地址："注册方式"为"手动录入"时有效，支持人工维护执行器的地址信息；
 
 ### 4.2 新建任务
 进入任务管理界面，点击“新增任务”按钮，在弹出的“新增任务”界面配置任务属性后保存即可。详情页参考章节 "三、任务详解"。
@@ -1417,7 +1309,6 @@ try{
 ![输入图片说明](https://www.xuxueli.com/doc/static/xxl-job/images/img_1002.png "在这里输入图片标题")
 
 
-
 ## 五、总体设计
 ### 5.1 源码目录介绍
     - /doc :文档资料
@@ -1449,11 +1340,11 @@ XXL-JOB调度模块基于自研调度组件并支持集群部署，调度数据�
 
 #### 5.3.2 系统组成
 - **调度模块（调度中心）**：
-  负责管理调度信息，按照调度配置发出调度请求，自身不承担业务代码。调度系统与任务解耦，提高了系统可用性和稳定性，同时调度系统性能不再受限于任务模块；
-  支持可视化、简单且动态的管理调度信息，包括任务新建，更新，删除，GLUE开发和任务报警等，所有上述操作都会实时生效，同时支持监控调度结果以及执行日志，支持执行器Failover。
+    负责管理调度信息，按照调度配置发出调度请求，自身不承担业务代码。调度系统与任务解耦，提高了系统可用性和稳定性，同时调度系统性能不再受限于任务模块；
+    支持可视化、简单且动态的管理调度信息，包括任务新建，更新，删除，GLUE开发和任务报警等，所有上述操作都会实时生效，同时支持监控调度结果以及执行日志，支持执行器Failover。
 - **执行模块（执行器）**：
-  负责接收调度请求并执行任务逻辑。任务模块专注于任务的执行等操作，开发和维护更加简单和高效；
-  接收“调度中心”的执行请求、终止请求和日志请求等。
+    负责接收调度请求并执行任务逻辑。任务模块专注于任务的执行等操作，开发和维护更加简单和高效；
+    接收“调度中心”的执行请求、终止请求和日志请求等。
 
 #### 5.3.3 架构图
 
@@ -1462,8 +1353,8 @@ XXL-JOB调度模块基于自研调度组件并支持集群部署，调度数据�
 ### 5.4 调度模块剖析
 #### 5.4.1 quartz的不足
 Quartz作为开源作业调度中的佼佼者，是作业调度的首选。但是集群环境中Quartz采用API的方式对任务进行管理，从而可以避免上述问题，但是同样存在以下问题：
-
-- 问题一：调用API的方式操作任务，不人性化；
+   
+- 问题一：调用API的的方式操作任务，不人性化；
 - 问题二：需要持久化业务QuartzJobBean到底层数据表中，系统侵入性相当严重。
 - 问题三：调度逻辑和QuartzJobBean耦合在同一个项目中，这将导致一个问题，在调度任务数量逐渐增多，同时调度任务逻辑逐渐加重的情况下，此时调度系统的性能将大大受限于业务；
 - 问题四：quartz底层以“抢占式”获取DB锁并由抢占成功节点负责运行任务，会导致节点负载悬殊非常大；而XXL-JOB通过执行器实现“协同分配式”运行任务，充分发挥集群优势，负载各节点均衡。
@@ -1559,7 +1450,7 @@ xxl-job-admin#com.xxl.job.admin.controller.JobApiController.callback
 
 如若需要支撑更多的任务量，可以通过 "调大调度线程数" 、"降低调度中心与执行器ping延迟" 和 "提升机器配置" 几种方式优化。
 
-#### 5.4.12 均衡调度
+#### 5.4.12 均衡调度    
 调度中心在集群部署时会自动进行任务平均分配，触发组件每次获取与线程池数量（调度中心支持自定义调度线程池大小）相关数量的任务，避免大量任务集中在单个调度中心集群节点；
 
 ### 5.5 任务 "运行模式" 剖析
@@ -1588,7 +1479,7 @@ xxl-job-admin#com.xxl.job.admin.controller.JobApiController.callback
 #### 5.5.4 执行器
 执行器实际上是一个内嵌的Server，默认端口9999（配置项：xxl.job.executor.port）。
 
-在项目启动时，执行器会通过“@XxlJob”识别Spring容器中“Bean模式任务”，以注解的value属性为key管理起来。
+在项目启动时，执行器会通过“@JobHandler”识别Spring容器中“Bean模式任务”，以注解的value属性为key管理起来。
 
 “执行器”接收到“调度中心”的调度请求时，如果任务类型为“Bean模式”，将会匹配Spring容器中的“Bean模式任务”，然后调用其execute方法，执行任务逻辑。如果任务类型为“GLUE模式”，将会加载GLue代码，实例化Java对象，注入依赖的Spring服务（注意：Glue代码中注入的Spring服务，必须存在与该“执行器”项目的Spring容器中），然后调用execute方法，执行任务逻辑。
 
@@ -1603,7 +1494,7 @@ XXL-JOB会为每次调度请求生成一个单独的日志文件，需要通过 
 
 ### 5.6 通讯模块剖析
 
-#### 5.6.1 一次完整的任务调度通讯流程
+#### 5.6.1 一次完整的任务调度通讯流程 
     - 1、“调度中心”向“执行器”发送http调度请求: “执行器”中接收请求的服务，实际上是一台内嵌Server，默认端口9999;
     - 2、“执行器”执行任务逻辑；
     - 3、“执行器”http回调“调度中心”调度结果: “调度中心”中接收回调的服务，是针对执行器开放一套API服务;
@@ -1611,14 +1502,14 @@ XXL-JOB会为每次调度请求生成一个单独的日志文件，需要通过 
 #### 5.6.2 通讯数据加密
 调度中心向执行器发送的调度请求时使用RequestModel和ResponseModel两个对象封装调度请求参数和响应数据, 在进行通讯之前底层会将上述两个对象对象序列化，并进行数据协议以及时间戳检验,从而达到数据加密的功能;
 
-### 5.7 任务注册, 任务自动发现
+### 5.7 任务注册, 任务自动发现   
 自v1.5版本之后, 任务取消了"任务执行机器"属性, 改为通过任务注册和自动发现的方式, 动态获取远程执行器地址并执行。
 
     AppName: 每个执行器机器集群的唯一标示, 任务注册以 "执行器" 为最小粒度进行注册; 每个任务通过其绑定的执行器可感知对应的执行器机器列表;
     注册表: 见"xxl_job_registry"表, "执行器" 在进行任务注册时将会周期性维护一条注册记录，即机器地址和AppName的绑定关系; "调度中心" 从而可以动态感知每个AppName在线的机器列表;
     执行器注册: 任务注册Beat周期默认30s; 执行器以一倍Beat进行执行器注册, 调度中心以一倍Beat进行动态任务发现; 注册信息的失效时间为三倍Beat; 
     执行器注册摘除：执行器销毁时，将会主动上报调度中心并摘除对应的执行器机器信息，提高心跳注册的实时性；
-
+    
 
 为保证系统"轻量级"并且降低学习部署成本，没有采用Zookeeper作为注册中心，采用DB方式进行任务注册发现；
 
@@ -1627,7 +1518,7 @@ XXL-JOB会为每次调度请求生成一个单独的日志文件，需要通过 
 当返回值符合 "ReturnT.code == ReturnT.SUCCESS_CODE" 时表示任务执行成功，否则表示任务执行失败，而且可以通过 "ReturnT.msg" 回调错误信息给调度中心；
 从而，在任务逻辑中可以方便的控制任务执行结果；
 
-### 5.9 分片广播 & 动态分片
+### 5.9 分片广播 & 动态分片   
 执行器集群部署时，任务路由策略选择"分片广播"情况下，一次任务调度将会广播触发对应集群中所有执行器执行一次任务，同时系统自动传递分片参数；可根据分片参数开发分片任务；
 
 "分片广播" 以执行器为维度进行分片，支持动态扩容执行器集群从而动态增加分片数量，协同进行业务处理；在进行大数据量业务操作时可显著提升任务处理能力和速度。
@@ -1646,7 +1537,7 @@ int shardTotal = XxlJobHelper.getShardTotal();
 echo "分片序号 index = $2"
 echo "分片总数 total = $3"
 ```  
-
+    
 分片参数属性说明：
 
     index：当前分片序号(从0开始)，执行器集群列表中当前执行器的序号；
@@ -1668,7 +1559,7 @@ echo "分片总数 total = $3"
 
 ### 5.11 故障转移 & 失败重试
 一次完整任务流程包括"调度（调度中心） + 执行（执行器）"两个阶段。
-
+    
 - "故障转移"发生在调度阶段，在执行器集群部署时，如果某一台执行器发生故障，该策略支持自动进行Failover切换到一台正常的执行器机器并且完成调度请求流程。
 - "失败重试"发生在"调度 + 执行"两个阶段，支持通过自定义任务失败重试次数，当任务失败时将会按照预设的失败重试次数主动进行重试；
 
@@ -1680,7 +1571,7 @@ echo "分片总数 total = $3"
 - 1、执行器改为手动注册，下线一半机器列表（A组），线上运行另一半机器列表（B组）；
 - 2、等待A组机器任务运行结束并编译上线；执行器注册地址替换为A组；
 - 3、等待B组机器任务运行结束并编译上线；执行器注册地址替换为A组+B组；
-  操作结束；
+操作结束；
 
 ### 5.13 任务执行结果说明
 系统根据以下标准判断任务执行结果，可参考之。
@@ -1697,7 +1588,7 @@ echo "分片总数 total = $3"
 
 ### 5.15 跨语言
 XXL-JOB是一个跨语言的任务调度平台，主要体现在如下几个方面：
-- 1、OpenApi（RESTful 格式）：调度中心与执行器提供语言无关的 RESTful API 服务，第三方任意语言可据此对接调度中心或者实现执行器，实现多语言支持。（可参考章节 “调度中心/执行器 RESTful API” ）
+- 1、RESTful API：调度中心与执行器提供语言无关的 RESTful API 服务，第三方任意语言可据此对接调度中心或者实现执行器。（可参考章节 “调度中心/执行器 RESTful API” ）
 - 2、多任务模式：提供Java、Python、PHP……等十来种任务模式，可参考章节 “5.5 任务 "运行模式" ”；理论上可扩展任意语言任务模式；
 - 2、提供基于HTTP的任务Handler（Bean任务，JobHandler="httpJobHandler"）；业务方只需要提供HTTP链接等相关信息即可，不限制语言、平台；（可参考章节 “原生内置Bean模式任务” ）
 
@@ -1708,17 +1599,17 @@ XXL-JOB是一个跨语言的任务调度平台，主要体现在如下几个方�
 可以通过以下命令快速构建调度中心，并启动运行；
 ```
 mvn clean package
-docker build -t xuxueli/xxl-job-admin:{version} ./xxl-job-admin
+docker build -t xuxueli/xxl-job-admin ./xxl-job-admin
 docker run --name xxl-job-admin -p 8080:8080 -d xuxueli/xxl-job-admin
 ```
 
-### 5.20 避免任务重复执行
+### 5.20 避免任务重复执行   
 调度密集或者耗时任务可能会导致任务阻塞，集群情况下调度组件小概率情况下会重复触发；
-针对上述情况，可以通过结合 "单机路由策略（如：第一台、一致性哈希）" + "阻塞策略（如：单机串行、丢弃后续调度）" 来规避，最终避免任务重复执行。
+针对上述情况，可以通过结合 "单机路由策略（如：第一台、一致性哈希）" + "阻塞策略（如：单机串行、丢弃后续调度）" 来规避，最终避免任务重复执行。 
 
-### 5.21 命令行任务
-原生提供通用命令行任务Handler（Bean任务，"CommandJobHandler"）；业务方只需要提供命令行即可，命令及参数之间通过空格隔开；
-如任务参数 "ls la" 或 "pwd" 将会执行命令并输出数据；
+### 5.21 命令行任务   
+原生提供通用命令行任务Handler（Bean任务，"CommandJobHandler"）；业务方只需要提供命令行即可；
+如任务参数 "pwd" 将会执行命令并输出数据；
 
 ### 5.22 日志自动清理
 XXL-JOB日志主要包含如下两部分，均支持日志自动清理，说明如下：
@@ -1731,13 +1622,12 @@ XXL-JOB日志主要包含如下两部分，均支持日志自动清理，说明�
 针对该问题，调度中心提供内置组件进行处理，逻辑为：调度记录停留在 "运行中" 状态超过10min，且对应执行器心跳注册失败不在线，则将本地调度主动标记失败；
 
 
-
-## 六、调度中心/执行器 OpenApi
+## 六、调度中心/执行器 RESTful API
 XXL-JOB 目标是一种跨平台、跨语言的任务调度规范和协议。
 
 针对Java应用，可以直接通过官方提供的调度中心与执行器，方便快速的接入和使用调度中心，可以参考上文 “快速入门” 章节。
 
-针对非Java应用，可借助 XXL-JOB 的标准 OpenApi（RESTful API） 方便的实现多语言支持。
+针对非Java应用，可借助 XXL-JOB 的标准 RESTful API 方便的实现多语言支持。
 
 - 调度中心 RESTful API：
     - 说明：调度中心提供给执行器使用的API；不局限于官方执行器使用，第三方可使用该API来实现执行器；
@@ -1779,7 +1669,7 @@ Header：
       "msg": null      // 错误提示消息
     }
 ```
-
+    
 #### b、执行器注册
 ```
 说明：执行器注册时使用，调度中心会实时感知注册成功的执行器并发起任务调度
@@ -1938,7 +1828,7 @@ Header：
 
 #### d、查看执行日志
 ```
-说明：查看任务日志，滚动方式加载
+说明：终止任务，滚动方式加载
 
 ------
 
@@ -1987,35 +1877,35 @@ Header：
 - 3、底层通讯支持两种方式，Servlet方式 + JETTY方式；
 - 4、支持“任务日志”；
 - 5、支持“串行执行”，并行执行；
-
-  说明：V1.2版本将系统架构按功能拆分为：
-
-  	- 调度模块（调度中心）：负责管理调度信息，按照调度配置发出调度请求；
-  	- 执行模块（执行器）：负责接收调度请求并执行任务逻辑；
-  	- 通讯模块：负责调度模块和任务模块之间的信息通讯；
-  优点：
-
-  	- 解耦：任务模块提供任务接口，调度模块维护调度信息，业务相互独立；
-  	- 高扩展性；
-  	- 稳定性；
+	
+	说明：V1.2版本将系统架构按功能拆分为：
+	
+		- 调度模块（调度中心）：负责管理调度信息，按照调度配置发出调度请求；
+		- 执行模块（执行器）：负责接收调度请求并执行任务逻辑；
+		- 通讯模块：负责调度模块和任务模块之间的信息通讯；
+	优点：
+	
+		- 解耦：任务模块提供任务接口，调度模块维护调度信息，业务相互独立；
+		- 高扩展性；
+		- 稳定性；
 
 ### 7.3 版本 V1.3.0，新特性[2016-05-19]
 - 1、遗弃“本地任务”模式，推荐使用“远程任务”，易于系统解耦，任务对应的JobHandler统称为“执行器”；
 - 2、遗弃“servlet”方式底层系统通讯，推荐使用JETTY方式，调度+回调双向通讯，重构通讯逻辑；
 - 3、UI交互优化：左侧菜单展开状态优化，菜单项选中状态优化，任务列表打开表格有压缩优化；
 - 4、【重要】“执行器”细分为：BEAN、GLUE两种开发模式，简介见下文：
-
-  “执行器” 模式简介：
-    - BEAN模式执行器：每个执行器都是Spring的一个Bean实例，XXL-JOB通过注解@JobHandler识别和调度执行器；
-    - GLUE模式执行器：每个执行器对应一段代码，在线Web编辑和维护，动态编译生效，执行器负责加载GLUE代码和执行；
+	
+	“执行器” 模式简介：
+		- BEAN模式执行器：每个执行器都是Spring的一个Bean实例，XXL-JOB通过注解@JobHandler识别和调度执行器；
+		 -GLUE模式执行器：每个执行器对应一段代码，在线Web编辑和维护，动态编译生效，执行器负责加载GLUE代码和执行；
 
 ### 7.4 版本 V1.3.1，新特性[2016-05-23]
 - 1、更新项目目录结构：
-    - /xxl-job-admin -------------------- 【调度中心】：负责管理调度信息，按照调度配置发出调度请求；
-    - /xxl-job-core ----------------------- 公共依赖
-    - /xxl-job-executor-example ------ 【执行器】：负责接收调度请求并执行任务逻辑；
-    - /db ---------------------------------- 建表脚本
-    - /doc --------------------------------- 用户手册
+	- /xxl-job-admin -------------------- 【调度中心】：负责管理调度信息，按照调度配置发出调度请求；
+	- /xxl-job-core ----------------------- 公共依赖
+	- /xxl-job-executor-example ------ 【执行器】：负责接收调度请求并执行任务逻辑；
+	- /db ---------------------------------- 建表脚本
+	- /doc --------------------------------- 用户手册
 - 2、在新的目录结构上，升级了用户手册；
 - 3、优化了一些交互和UI；
 
@@ -2029,7 +1919,7 @@ Header：
 - 2、执行器底层实现代码进行重度重构, 优化底层建表脚本;
 - 3、执行器中任务线程分组逻辑优化: 之前根据执行器JobHandler进行线程分组,当多个任务复用Jobhanlder会导致相互阻塞。现改为根据调度中心任务进行任务线程分组,任务与任务执行相互隔离;
 - 4、执行器调度通讯方案优化, 通过Hex + HC实现建议RPC通讯协议, 优化了通讯参数的维护和解析流程;
-- 5、调度中心, 新建/编辑任务, 界面属性调整:
+- 5、调度中心, 新建/编辑任务, 界面属性调整: 
     - 5.1、任务新增/编辑界面中去除 "任务名JobName"属性 ,该属性改为系统自动生成: 该字段之前主要用于在 "调度中心" 唯一标示一个任务, 现实意义不大, 因此计划淡化掉该字段,改为系统生成UUID,从而简化任务新建的操作;
     - 5.2、任务新增/编辑界面中去除 "GLUE模式" 复选框位置调整, 改为贴近"JobHandler"输入框右侧;
     - 5.3、任务新增/编辑界面中去除 "报警阈值" 属性;
@@ -2044,7 +1934,7 @@ Header：
 Tips: 历史版本(V1.3.x)目前已经Release至稳定版本, 进入维护阶段, 地址见分支 [V1.3](https://github.com/xuxueli/xxl-job/tree/v1.3) 。新特性将会在master分支持续更新。
 
 ### 7.7 版本 V1.4.1 新特性[2016-09-06]
-- 1、项目成功推送maven中央仓库, 中央仓库地址以及依赖如下:
+- 1、项目成功推送maven中央仓库, 中央仓库地址以及依赖如下: 
     ```
     <!-- http://repo1.maven.org/maven2/com/xuxueli/xxl-job-core/ -->
     <dependency>
@@ -2172,7 +2062,7 @@ Tips: 历史版本(V1.3.x)目前已经Release至稳定版本, 进入维护阶段
 - 11、统一maven依赖版本管理；
 
 ### 7.20 版本 V1.8.2 特性[2017-09-04]
-- 1、项目主页搭建：提供中英文文档：https://www.xuxueli.com/xxl-job
+- 1、项目主页搭建：提供中英文文档：https://www.xuxueli.com/xxl-job 
 - 2、JFinal执行器Sample示例项目；
 - 3、事件触发：除了"Cron方式"和"任务依赖方式"触发任务执行之外，支持基于事件的触发任务方式。调度中心提供触发任务单次执行的API服务，可根据业务事件灵活触发。
 - 4、执行器摘除：执行器销毁时，主动通知调度中心并摘除对应执行器节点，提高执行器状态感知的时效性。
@@ -2267,7 +2157,7 @@ Tips: 历史版本(V1.3.x)目前已经Release至稳定版本, 进入维护阶段
 - 38、GLUE任务脚本字段类型调整，改为mediumtext类型，提高GLUE长度上限；
 - 39、任务监控线程Log输出优化，运行中任务的监控Log改为debug级别，减少非核心日志量；
 - 40、项目依赖全量升级至较新稳定版本，如spring、Jackson、groovy等等；
-- 41、docker支持：调度中心提供 Dockerfile 方便快速构建docker镜像；
+- 41、docker支持：调度中心提供 Dockerfile 方便快速构建docker镜像； 
 
 ### 7.24 版本 V2.0.0 Release Notes[2018-11-04]
 - 1、调度中心迁移到 springboot；
@@ -2278,8 +2168,8 @@ Tips: 历史版本(V1.3.x)目前已经Release至稳定版本, 进入维护阶段
 - 6、任务状态优化，仅运行状态"NORMAL"任务关联至quartz，降低quartz底层数据存储与调度压力；
 - 7、任务状态规范：新增任务默认停止状态，任务更新时保持任务状态不变；
 - 8、IP获取逻辑优化，优先遍历网卡来获取可用IP；
-- 9、任务新增的API服务接口返回任务ID，方便调用方使用；
-- 10、组件化优化，移除对 spring 的依赖：非spring应用选用 "XxlJobExecutor" 、spring应用选用 "XxlJobSpringExecutor" 作为执行器组件；
+- 9、任务新增的API服务接口返回任务ID，方便调用方实用；
+- 10、组件化优化，移除对 spring 的依赖：非spring应用选用 "XxlJobExecutor" 、spring应用选用 "XxlJobSpringExecutor" 作为执行器组件； 
 - 11、任务RollingLog展示逻辑优化，修复超时任务无法查看的问题；
 - 12、多项UI组件升级到最新版本，如：CodeMirror、Echarts、Jquery 等；
 - 13、项目依赖升级 groovy 至较新稳定版本；pom清理；
@@ -2413,7 +2303,7 @@ data: post-data
 - 20、修复bootstrap.min.css.map 404问题；
 - 21、执行器UI交互优化,移除冗余order属性；
 - 22、执行备注消息长度限制，修复数据超长无法存储导致导致回调失败的问题；
-注意：XxlJobSpringExecutor组件个别字段调整：“appName” 调整为 “appname” ，升级时该组件时需要注意；
+注意：XxlJobSpringExecutor组件个别字段调整：“appName” 调整为 “appname” ，升级时该组件时需要注意；   
 
 ### 7.31 版本 v2.3.0 Release Notes[2021-02-09]
 - 1、【新增】调度过期策略：调度中心错过调度时间的补偿处理策略，包括：忽略、立即补偿触发一次等；
@@ -2451,7 +2341,7 @@ public void execute() {
 - 24、【修复】执行器注册表字段优化，解决执行器注册节点过多导致注册信息存储和更新失败的问题；
 - 25、【修复】轮训路由策略优化，修复小概率下并发问题；
 - 26、【修复】页面redirect跳转后https变为http问题修复；
-- 27、【修复】执行器日志清理优化，修复小概率下日志文件为空导致清理异常问题；
+- 27、【修复】执行器日志清理优化，修复小概率下日志文件为空导致清理异常问题；      
 
 ### 7.32 版本 v2.3.1 Release Notes[2022-05-21]
 - 1、【修复】修复风险漏洞，升级问题低版本项目依赖：CVE-2021-2471、CVE-2022-22965等。
@@ -2461,91 +2351,22 @@ public void execute() {
 - 5、【优化】任务线程名优化，提升可读性与问题定位效率(ISSUE-2527)。
 
 ### 7.33 版本 v2.4.0 Release Notes[2023-03-23]
-- 1、【优化】执行器任务Bean扫描逻辑优化：解决懒加载注解失效问题；
+- 1、【优化】执行器任务Bean扫描逻辑优化：解决懒加载注解失效问题。
 - 2、【优化】多个项目依赖升级至较新稳定版本，涉及netty、groovy、spring、springboot、mybatis等；
-- 3、【修复】漏洞修复，包括："CVE-2022-36157" 授权漏洞修复；"CVE-2022-43183" SSRF漏洞修复；
+- 3、【修复】"CVE-2022-36157" 授权漏洞修复。 
+- 4、【修复】"CVE-2022-43183" SSRF漏洞修复。
 
 ### 7.34 版本 v2.4.1 Release Notes[2024-04-17]
 - 1、【优化】多个项目依赖升级至较新稳定版本，涉及netty、groovy、springboot、mybatis等；
-- 2、【优化】执行器注册节点显示交互调整，优化注册节点过多时展示不全体验；
-- 3、【修复】漏洞修复，包括："CVE-2022-43402" groovy低版本漏洞修复；"CVE-2024-29025" netty低版本漏洞修复；"CVE-2024-3366" freemarker模板注入漏洞修复；"CVE-2022-43183" 越权漏洞增强修复；
-- 4、【修复】调度日志页面XSS问题修复(ISSUE-3360)。
+- 2、【修复】"CVE-2022-43402" groovy低版本漏洞修复。
+- 3、【修复】"CVE-2024-29025" netty低版本漏洞修复。
+- 4、【修复】"CVE-2024-3366" freemarker模板注入漏洞修复。
+- 5、【修复】"CVE-2022-43183" 越权漏洞修复。
+- 6、【修复】调度日志页面XSS漏洞修复(ISSUE-3360)。
+- 7、【优化】执行器注册节点显示优化，解决注册节点过多时无法展示问题。
 
-
-### 7.35 版本 v2.4.2 Release Notes[2024-11-16]
-- 1、【优化】调度中心任务Next计算逻辑调整，避免Cron解析失败导致重复执行问题。
-- 2、【优化】Cron解析组件代码重构微调，健壮性提升；
-- 3、【优化】修改密码交互调整，避免CSRF隐患；
-- 4、【优化】JdkSerializeTool流关闭逻辑优化；
-- 5、【优化】任务信息、执行日志API非功能设计完善，避免越权隐患；
-- 6、【修复】漏洞修复，包括 "CVE-2024-42681" 子任务越权漏洞修复、"CVE-2023-33779" 任务API越权问题修复；
-- 7、【升级】多个项目依赖升级至较新稳定版本，涉及netty、groovy、gson、springboot、mybatis等；
-
-### 7.36 版本 v2.5.0 Release Notes[2025-01-11]
-- 1、【优化】框架基础守护线程异常处理逻辑优化，避免极端情况下因Error导致调度终止问题；
-- 2、【优化】底层通讯超时时间支持自定义，默认3秒，缓解网络抖动导致任务通讯超时问题；可参考 xxl-job-admin 和 samples 示例代码自行配置；
-- 3、【修复】调度中心快慢线程池优化拒绝策略，避免因默认AbortPolicy导致调度结果丢失问题；
-- 4、【优化】调度中心快慢线程池队列长度调整，优化激增调度时任务积压问题；
-- 5、【重构】调度线程任务信息更新逻辑优化，避免极端情况下已关闭任务被启动问题；
-- 6、【重构】执行器注册逻辑重构，降低多调度中心地址时并发注册问题；任务注册表新增唯一索引，避免冗余注册信息存储；
-- 7、【优化】部分系统日志优化，提升可读性；
-- 8、【优化】合并PR-3616，代码结构注释优化；
-- 9、【优化】合并PR-3619，避免调度过程中任务停止边界情况处理逻辑；
-- 10、【优化】合并PR-3605，避免子任务是任务本身导致死循环；
-- 11、【修复】合并PR-3585，修复全局密码长度不一致问题；
-- 12、【优化】合并PR-3518，SQL列别名反引号包裹，提升跨数据迁移兼容性；
-- 13、【优化】合并PR-3518、PR-3400，日志表索引优化，提升大日志量情况下日志查询及清理速度；
-- 14、【升级】多个项目依赖升级至较新稳定版本，涉及netty、slf4j、junit等；
-
-**备注：**
-- a、本次升级数据模型及通讯协议向前兼容，v2.4.*代码和系统可无缝升级（该版本优化了“xxl_job_log”表索引，建议低版本参考调整）；
-- b、版本v2.5.x为基于jdk8的最后的大版本，将会长期持续维护，问题及漏洞将会及时跟进修复。
-- c、下个大版本（v3.0）将会基于 jdk17 与 springboot3.x 构建；
-
-### 7.37 版本 v3.0.0 Release Notes[2025-02-07]
-- 1、【升级】调度中心升级至 SpringBoot3 + JDK17；
-- 2、【升级】Docker镜像升级，镜像构建基于JDK17；
-- 3、【优化】IP获取逻辑优化，优先遍历网卡来获取可用IP；
-- 4、【优化】通用命令行任务(“commandJobHandler”)优化，支持多参数执行，命令及参数之间通过空格隔开；如任务参数 "ls la" 或 "pwd" 将会执行命令并输出数据；
-- 5、【优化】通用HTTP任务（httpJobHandler）优化，任务参数格式调整为json格式；
-- 6、【升级】多个项目依赖升级至较新稳定版本，涉及 netty、groovy、spring/springboot 等；
-
-**备注：**
-- a、本次升级数据模型及通讯协议向前兼容，v2.4.*及后续版本可无缝升级；
-- b、版本3.x开始要求Jdk17；版本2.x及以下支持Jdk1.8。如对Jdk版本有诉求，可选择接入不同版本;
-
-### 7.38 版本 v3.1.0 Release Notes[2025-05-01]
-- 1、【新增】新增提供 “AI执行器” 并内置多个Bean模式 AI任务Handler，与spring-ai、ollama、dify等集成打通，支持快速开发AI类任务。
-    - AppName：xxl-job-executor-sample-ai
-    - 执行器代码：xxl-job-executor-sample-springboot-ai
-    - 执行器初始化脚本：执行参考SQL脚本，或自行人工创建：
-        ```
-        INSERT INTO `xxl_job_group`(`app_name`, `title`, `address_type`, `address_list`, `update_time`)
-            VALUES ('xxl-job-executor-sample-ai', 'AI执行器Sample', 0, NULL, now());
-        ```
-- 2、【新增】新增多个 Bean模式 AI任务Handler，如 ollamaJobHandler、difyWorkflowJobHandler 等，支持快速集成开发AI任务。任务配置可参考 [AI执行器](https://www.xuxueli.com/xxl-job/#原生内置Bean模式任务（AI执行器）)
-  - a、ollamaJobHandler： OllamaChat任务，支持自定义prompt、input等输入信息。
-  - b、difyWorkflowJobHandler：DifyWorkflow 任务，支持自定义inputs、user、baseUrl、apiKey等输入信息。
-- 3、【修复】合并PR-3708、PR-3704，解决固定速度调度模式下，下次计算执行时间小概率（间隔超长时）不准问题。
-- 4、【修复】任务操作逻辑优化，修复边界情况下逻辑中断问题 (ISSUE-2081)。
-- 5、【修复】调度中心Cron前端组件优化，解决week配置与后端兼容性问题 (ISSUE-2220)。
-- 6、【修复】任务RollingLog权限逻辑调整：修复非管理员账号越权访问问题 (ISSUE-3705)。
-- 7、【优化】Glue IDE调整，版本回溯支持查看修改时间；
-- 8、【优化】任务RollingLog调整，XSS过滤支持白名单排出，提升日志易读性；
-- 9、【优化】执行器日志文件保存天数（logretentiondays）调整，最小保留时间调整至3天。
-- 10、【升级】多个项目依赖升级至较新稳定版本，涉及 gson、groovy、spring/springboot、mysql 等；
-
-### 7.39 版本 v3.1.1 Release Notes[2025-06-23]
-- 1、【调整】AI任务（difyWorkflowJobHandler）优化：针对 “baseUrl、apiKey” 等Dify配置信息，从执行器侧文件类配置调整至调度中心“任务参数”动态配置，支持多Dify应用集成并提升研发效率；
-- 2、【优化】合并PR-2417，修复任务管理时JobHandler录入空格问题；
-- 3、【优化】合并PR-2504，规避SQL注入问题；
-- 4、【升级】多个项目依赖升级至较新稳定版本，涉及 netty、spring/springboot、groovy 等；
-
-
-### 7.40 版本 v3.1.2 Release Notes[规划中]
-- 1、[规划中]登陆态Token生成逻辑优化，混淆登陆时间属性，降低token泄漏风险；
-- 2、[规划中]组件扫描改为BeanPostProcessor方式，避免小概率情况下提前初始化；底层组件移除单例写法，汇总factory统一管理；
-
+### 7.35 版本 v2.4.2 Release Notes[规划中]
+- 1、[规划中]登陆态Token声称逻辑优化，混淆登陆时间属性，降低token泄漏风险。
 
 ### TODO LIST
 - 1、调度隔离：调度中心针对不同执行器，各自维护不同的调度和远程触发组件。
@@ -2577,7 +2398,6 @@ public void execute() {
 - 17、批量调度：调度请求入queue，调度线程批量获取调度请求并发起远程调度；提高线程效率；
 - 18、执行器端口复用，复用容器端口提供通讯服务；
 - 19、自定义失败重试时间间隔；
-- 20、安全功能增强，通讯加密参数改用加密数据避免AccessToken明文， 降低token泄漏风险；
 
 ## 八、其他
 

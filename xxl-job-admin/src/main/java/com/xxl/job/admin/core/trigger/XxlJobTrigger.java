@@ -15,6 +15,7 @@ import com.xxl.job.core.util.IpUtil;
 import com.xxl.job.core.util.ThrowableUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
@@ -119,6 +120,7 @@ public class XxlJobTrigger {
         XxlJobLog jobLog = new XxlJobLog();
         jobLog.setJobGroup(jobInfo.getJobGroup());
         jobLog.setJobId(jobInfo.getId());
+        jobLog.setJobDesc(jobInfo.getJobDesc());
         jobLog.setTriggerTime(new Date());
         XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().save(jobLog);
         logger.debug(">>>>>>>>>>> xxl-job trigger start, jobId:{}", jobLog.getId());
@@ -126,6 +128,7 @@ public class XxlJobTrigger {
         // 2、init trigger-param
         TriggerParam triggerParam = new TriggerParam();
         triggerParam.setJobId(jobInfo.getId());
+        triggerParam.setJobGroup(group.getAppname());
         triggerParam.setExecutorHandler(jobInfo.getExecutorHandler());
         triggerParam.setExecutorParams(jobInfo.getExecutorParam());
         triggerParam.setExecutorBlockStrategy(jobInfo.getExecutorBlockStrategy());
@@ -149,7 +152,7 @@ public class XxlJobTrigger {
                     address = group.getRegistryList().get(0);
                 }
             } else {
-                routeAddressResult = executorRouteStrategyEnum.getRouter().route(triggerParam, group.getRegistryList());
+                routeAddressResult = executorRouteStrategyEnum.getRouter().route(triggerParam, group.getRegistryList(),group.getAppSecret());
                 if (routeAddressResult.getCode() == ReturnT.SUCCESS_CODE) {
                     address = routeAddressResult.getContent();
                 }
@@ -161,7 +164,8 @@ public class XxlJobTrigger {
         // 4、trigger remote executor
         ReturnT<String> triggerResult = null;
         if (address != null) {
-            triggerResult = runExecutor(triggerParam, address);
+            String accessToken = group.getAppSecret();
+            triggerResult = runExecutor(triggerParam, address,accessToken);
         } else {
             triggerResult = new ReturnT<String>(ReturnT.FAIL_CODE, null);
         }
@@ -204,10 +208,13 @@ public class XxlJobTrigger {
      * @param address
      * @return
      */
-    public static ReturnT<String> runExecutor(TriggerParam triggerParam, String address){
+    public static ReturnT<String> runExecutor(TriggerParam triggerParam, String address,String accessToken){
         ReturnT<String> runResult = null;
         try {
-            ExecutorBiz executorBiz = XxlJobScheduler.getExecutorBiz(address);
+            if(!StringUtils.hasText(accessToken)){
+                accessToken = XxlJobAdminConfig.getAdminConfig().getAccessToken();
+            }
+            ExecutorBiz executorBiz = XxlJobScheduler.getExecutorBiz(address,accessToken);
             runResult = executorBiz.run(triggerParam);
         } catch (Exception e) {
             logger.error(">>>>>>>>>>> xxl-job trigger error, please check if the executor[{}] is running.", address, e);
@@ -222,5 +229,10 @@ public class XxlJobTrigger {
         runResult.setMsg(runResultSB.toString());
         return runResult;
     }
+
+//    public static ReturnT<String> runExecutor(TriggerParam triggerParam, String address){
+//
+//    }
+
 
 }

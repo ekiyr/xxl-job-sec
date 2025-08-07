@@ -5,6 +5,7 @@ import com.xxl.job.core.biz.impl.ExecutorBizImpl;
 import com.xxl.job.core.biz.model.*;
 import com.xxl.job.core.thread.ExecutorRegistryThread;
 import com.xxl.job.core.util.GsonTool;
+import com.xxl.job.core.util.Sm4Util;
 import com.xxl.job.core.util.ThrowableUtil;
 import com.xxl.job.core.util.XxlJobRemotingUtil;
 import io.netty.bootstrap.ServerBootstrap;
@@ -19,6 +20,7 @@ import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.CharsetUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 import java.util.concurrent.*;
 
@@ -148,14 +150,24 @@ public class EmbedServer {
             String uri = msg.uri();
             HttpMethod httpMethod = msg.method();
             boolean keepAlive = HttpUtil.isKeepAlive(msg);
-            String accessTokenReq = msg.headers().get(XxlJobRemotingUtil.XXL_JOB_ACCESS_TOKEN);
+
+            // 获取Channel
+            SocketChannel channel = (SocketChannel) ctx.channel();
+            // 获取SocketAddress对象，该对象包含了IP地址和端口号
+            java.net.SocketAddress socketAddress = channel.remoteAddress();
+            // 将SocketAddress转换为InetSocketAddress，然后获取IP地址
+            if (socketAddress instanceof java.net.InetSocketAddress) {
+                java.net.InetSocketAddress inetSocketAddress = (java.net.InetSocketAddress) socketAddress;
+                String clientIp = inetSocketAddress.getAddress().getHostAddress();
+                System.out.println("Client IP: " + clientIp);
+            }
 
             // invoke
             bizThreadPool.execute(new Runnable() {
                 @Override
                 public void run() {
                     // do invoke
-                    Object responseObj = process(httpMethod, uri, requestData, accessTokenReq);
+                    Object responseObj = process(httpMethod, uri, requestData);
 
                     // to json
                     String responseJson = GsonTool.toJson(responseObj);
@@ -166,7 +178,7 @@ public class EmbedServer {
             });
         }
 
-        private Object process(HttpMethod httpMethod, String uri, String requestData, String accessTokenReq) {
+        private Object process(HttpMethod httpMethod, String uri, String cryptRequestData) {
             // valid
             if (HttpMethod.POST != httpMethod) {
                 return new ReturnT<String>(ReturnT.FAIL_CODE, "invalid request, HttpMethod not support.");
@@ -174,14 +186,22 @@ public class EmbedServer {
             if (uri == null || uri.trim().length() == 0) {
                 return new ReturnT<String>(ReturnT.FAIL_CODE, "invalid request, uri-mapping empty.");
             }
-            if (accessToken != null
-                    && accessToken.trim().length() > 0
-                    && !accessToken.equals(accessTokenReq)) {
-                return new ReturnT<String>(ReturnT.FAIL_CODE, "The access token is wrong.");
-            }
 
             // services mapping
             try {
+                if(!StringUtils.hasText(cryptRequestData)){
+                    return new ReturnT<String>(ReturnT.FAIL_CODE, "invalid request, date is empty.");
+                }
+
+                //执行解密
+                String requestDataWithTime = Sm4Util.decrypt4Base64WithCBC(cryptRequestData,accessToken);
+                Long reqTime = Long.valueOf(requestDataWithTime.substring(0, 16));
+                long diffTime = System.currentTimeMillis() - reqTime;
+                if (diffTime > 60 * 1000L) {
+                    logger.error("invalid request, data is expired. reqTime = {},diffTime={}",reqTime,diffTime);
+                    return new ReturnT<String>(ReturnT.FAIL_CODE, "invalid request, data is expired.");
+                }
+                String requestData = requestDataWithTime.substring(16);
                 switch (uri) {
                     case "/beat":
                         return executorBiz.beat();
@@ -212,7 +232,7 @@ public class EmbedServer {
         private void writeResponse(ChannelHandlerContext ctx, boolean keepAlive, String responseJson) {
             // write response
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.copiedBuffer(responseJson, CharsetUtil.UTF_8));   //  Unpooled.wrappedBuffer(responseJson)
-            response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/html;charset=UTF-8");       // HttpHeaderValues.TEXT_PLAIN.toString()
+            response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json;charset=UTF-8");       // HttpHeaderValues.TEXT_PLAIN.toString()
             response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
             if (keepAlive) {
                 response.headers().set(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);

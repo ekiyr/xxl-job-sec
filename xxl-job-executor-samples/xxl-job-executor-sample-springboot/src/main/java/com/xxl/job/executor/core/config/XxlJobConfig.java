@@ -1,5 +1,6 @@
 package com.xxl.job.executor.core.config;
 
+import com.xxl.job.core.biz.client.AdminJobInfoClient;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,14 +20,14 @@ public class XxlJobConfig {
     @Value("${xxl.job.admin.addresses}")
     private String adminAddresses;
 
-    @Value("${xxl.job.admin.accessToken}")
+    @Value("${xxl.job.accessToken}")
     private String accessToken;
-
-    @Value("${xxl.job.admin.timeout}")
-    private int timeout;
 
     @Value("${xxl.job.executor.appname}")
     private String appname;
+
+    @Value("${xxl.job.executor.adminUser:}")
+    private String adminUser;
 
     @Value("${xxl.job.executor.address}")
     private String address;
@@ -54,12 +55,20 @@ public class XxlJobConfig {
         xxlJobSpringExecutor.setIp(ip);
         xxlJobSpringExecutor.setPort(port);
         xxlJobSpringExecutor.setAccessToken(accessToken);
-        xxlJobSpringExecutor.setTimeout(timeout);
         xxlJobSpringExecutor.setLogPath(logPath);
         xxlJobSpringExecutor.setLogRetentionDays(logRetentionDays);
 
         return xxlJobSpringExecutor;
     }
+
+    @Bean
+    public AdminJobInfoClient adminJobInfoClient(){
+        AdminJobInfoClient adminJobInfoClient= new AdminJobInfoClient(adminAddresses, accessToken,appname);
+        //设置管理用户
+        adminJobInfoClient.setAdminUser(adminUser);
+        return adminJobInfoClient;
+    }
+
 
     /**
      * 针对多网卡、容器内部署等情况，可借助 "spring-cloud-commons" 提供的 "InetUtils" 组件灵活定制注册IP；

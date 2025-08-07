@@ -14,20 +14,31 @@
 		<form id="loginForm" method="post" >
 			<div class="login-box-body">
 				<p class="login-box-msg">${I18n.admin_name}</p>
+
 				<div class="form-group has-feedback">
-	            	<input type="text" name="userName" class="form-control" placeholder="${I18n.login_username_placeholder}"  maxlength="20" >
-	            	<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				    <input type="text" name="userName" class="form-control" placeholder="${I18n.login_username_placeholder}"  maxlength="18" >
 				</div>
 	          	<div class="form-group has-feedback">
-	            	<input type="password" name="password" class="form-control" placeholder="${I18n.login_password_placeholder}"  maxlength="20" >
-	            	<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+				    <input type="password" name="password" class="form-control" placeholder="${I18n.login_password_placeholder}"  maxlength="18" >
 	          	</div>
+				<div class="form-group has-feedback">
+					<div class="input-group" style="border: 0px solid black;">
+						<div class="input-group-addon" style="border: 0px solid black;vertical-align: middle;padding: 0;">
+							<img id="imgBase64" src="${imgBase64}" alt="点击刷新验证码" title="点击刷新验证码"/>
+						</div>
+						<input type="hidden" id="codeUIDIn" name="codeUID" value="${codeUID}"/>
+							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+						<input type="text" name="verfyCode" class="form-control" placeholder="输入验证码"  maxlength="12" style="vertical-align: middle;">
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-xs-8">
 		              	<div class="checkbox icheck">
-		                	<label>
-		                  		<input type="checkbox" name="ifRemember" > &nbsp; ${I18n.login_remember_me}
-		                	</label>
+<#--		                	<label>-->
+<#--		                  		<input type="checkbox"  name="ifRemember" > &nbsp; ${I18n.login_remember_me}-->
+<#--		                	</label>-->
 						</div>
 		            </div><!-- /.col -->
 		            <div class="col-xs-4">

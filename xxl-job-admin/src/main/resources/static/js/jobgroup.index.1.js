@@ -245,7 +245,7 @@ $(function() {
 					layer.open({
 						title: I18n.system_tips ,
                         btn: [ I18n.system_ok ],
-						content: I18n.system_add_suc ,
+						content: I18n.system_add_suc_token+data.content ,
 						icon: '1',
 						end: function(layero, index){
 							jobGroupTable.fnDraw();

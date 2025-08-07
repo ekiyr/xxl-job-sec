@@ -6,6 +6,18 @@ $(function(){
       radioClass: 'iradio_square-blue',
       increaseArea: '20%' // optional
     });
+    $('#imgBase64').on('click', function() {
+            $.get(base_url + "/getCapcha", function(data) {
+                $('#codeUIDIn').val(data.codeUID);
+                $('#imgBase64').attr('src', data.imgBase64);;
+              console.log(data);
+            })
+            .fail(function(error) {
+              // 如果请求失败，这个函数会被调用
+              alert("刷新验证码失败");
+              console.error('请求失败:', error);
+            });
+    });
     
 	// login Form Valid
 	var loginFormValid = $("#loginForm").validate({
@@ -16,12 +28,12 @@ $(function(){
         	userName : {  
         		required : true ,
                 minlength: 4,
-                maxlength: 20
+                maxlength: 18
             },  
             password : {  
             	required : true ,
                 minlength: 4,
-                maxlength: 20
+                maxlength: 18
             } 
         }, 
         messages : {  
@@ -32,7 +44,7 @@ $(function(){
             password : {
             	required  : I18n.login_password_empty  ,
                 minlength : I18n.login_password_lt_4
-                /*,maxlength:"登录密码不应超过20位"*/
+                /*,maxlength:"登录密码不应超过18位"*/
             }
         }, 
 		highlight : function(element) {  

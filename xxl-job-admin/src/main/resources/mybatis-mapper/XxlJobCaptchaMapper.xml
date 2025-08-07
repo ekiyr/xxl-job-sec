@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxl.job.admin.dao.XxlJobCaptchaDao">
+
+	<resultMap id="XxlJobCaptcha" type="com.xxl.job.admin.core.model.XxlJobCaptcha" >
+		<result column="id" property="id" />
+		<result column="code_uid" property="codeUid" />
+	    <result column="req_ip" property="reqIp" />
+	    <result column="code" property="code" />
+	    <result column="expire_time" property="expireTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, code_uid, req_ip, code, expire_time
+	</sql>
+
+	<select id="getByCodeUid"  resultMap="XxlJobCaptcha">
+		SELECT <include refid="Base_Column_List" />
+		FROM xxl_job_captcha
+		WHERE code_uid = #{codeUid}
+	</select>
+	<select id="getByReqIp"  resultMap="XxlJobCaptcha">
+		SELECT <include refid="Base_Column_List" />
+		FROM xxl_job_captcha
+		WHERE req_ip = #{reqIp}
+	</select>
+
+	<insert id="save" parameterType="com.xxl.job.admin.core.model.XxlJobCaptcha" useGeneratedKeys="true" keyProperty="id" >
+		INSERT INTO xxl_job_captcha (code_uid, req_ip, code, expire_time)
+		VALUES ( #{codeUid},#{reqIp},#{code},#{expireTime} );
+	</insert>
+
+	<update id="update" parameterType="com.xxl.job.admin.core.model.XxlJobUser" >
+		UPDATE xxl_job_captcha
+		SET
+			code_uid = #{codeUid},
+			req_ip = #{reqIp},
+			code = #{code},
+			expire_time = #{expireTime}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="delete">
+		DELETE
+		FROM xxl_job_captcha
+		WHERE id = #{id}
+	</delete>
+
+</mapper>

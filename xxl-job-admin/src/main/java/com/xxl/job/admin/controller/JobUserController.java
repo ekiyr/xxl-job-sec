@@ -1,23 +1,26 @@
 package com.xxl.job.admin.controller;
 
 import com.xxl.job.admin.controller.annotation.PermissionLimit;
-import com.xxl.job.admin.controller.interceptor.PermissionInterceptor;
 import com.xxl.job.admin.core.model.XxlJobGroup;
 import com.xxl.job.admin.core.model.XxlJobUser;
 import com.xxl.job.admin.core.util.I18nUtil;
 import com.xxl.job.admin.dao.XxlJobGroupDao;
 import com.xxl.job.admin.dao.XxlJobUserDao;
+import com.xxl.job.admin.service.LoginService;
+import com.xxl.job.admin.util.MD5Util;
 import com.xxl.job.core.biz.model.ReturnT;
-import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +52,7 @@ public class JobUserController {
     @ResponseBody
     @PermissionLimit(adminuser = true)
     public Map<String, Object> pageList(@RequestParam(value = "start", required = false, defaultValue = "0") int start,
-                                        @RequestParam(value = "length", required = false, defaultValue = "10") int length,
+                                        @RequestParam(value = "length",required = false, defaultValue = "10") int length,
                                         @RequestParam("username") String username,
                                         @RequestParam("role") int role) {
 
@@ -75,7 +78,7 @@ public class JobUserController {
     @RequestMapping("/add")
     @ResponseBody
     @PermissionLimit(adminuser = true)
-    public ReturnT<String> add(XxlJobUser xxlJobUser) {
+    public ReturnT<String> add(@RequestBody XxlJobUser xxlJobUser) {
 
         // valid username
         if (!StringUtils.hasText(xxlJobUser.getUsername())) {
@@ -94,7 +97,8 @@ public class JobUserController {
             return new ReturnT<String>(ReturnT.FAIL_CODE, I18nUtil.getString("system_lengh_limit")+"[4-20]" );
         }
         // md5 password
-        xxlJobUser.setPassword(DigestUtils.md5DigestAsHex(xxlJobUser.getPassword().getBytes()));
+        String md5pwd = MD5Util.md5Twice(xxlJobUser.getPassword());
+        xxlJobUser.setPassword(md5pwd);
 
         // check repeat
         XxlJobUser existUser = xxlJobUserDao.loadByUserName(xxlJobUser.getUsername());
@@ -110,10 +114,10 @@ public class JobUserController {
     @RequestMapping("/update")
     @ResponseBody
     @PermissionLimit(adminuser = true)
-    public ReturnT<String> update(HttpServletRequest request, XxlJobUser xxlJobUser) {
+    public ReturnT<String> update(HttpServletRequest request, @RequestBody XxlJobUser xxlJobUser) {
 
         // avoid opt login seft
-        XxlJobUser loginUser = PermissionInterceptor.getLoginUser(request);
+        XxlJobUser loginUser = (XxlJobUser) request.getAttribute(LoginService.LOGIN_IDENTITY_KEY);
         if (loginUser.getUsername().equals(xxlJobUser.getUsername())) {
             return new ReturnT<String>(ReturnT.FAIL.getCode(), I18nUtil.getString("user_update_loginuser_limit"));
         }
@@ -124,8 +128,8 @@ public class JobUserController {
             if (!(xxlJobUser.getPassword().length()>=4 && xxlJobUser.getPassword().length()<=20)) {
                 return new ReturnT<String>(ReturnT.FAIL_CODE, I18nUtil.getString("system_lengh_limit")+"[4-20]" );
             }
-            // md5 password
-            xxlJobUser.setPassword(DigestUtils.md5DigestAsHex(xxlJobUser.getPassword().getBytes()));
+            String md5pwd = MD5Util.md5Twice(xxlJobUser.getPassword().trim());
+            xxlJobUser.setPassword(DigestUtils.md5DigestAsHex(md5pwd.getBytes(StandardCharsets.UTF_8)));
         } else {
             xxlJobUser.setPassword(null);
         }
@@ -138,10 +142,10 @@ public class JobUserController {
     @RequestMapping("/remove")
     @ResponseBody
     @PermissionLimit(adminuser = true)
-    public ReturnT<String> remove(HttpServletRequest request, @RequestParam("id") int id) {
+    public ReturnT<String> remove(HttpServletRequest request, int id) {
 
         // avoid opt login seft
-        XxlJobUser loginUser = PermissionInterceptor.getLoginUser(request);
+        XxlJobUser loginUser = (XxlJobUser) request.getAttribute(LoginService.LOGIN_IDENTITY_KEY);
         if (loginUser.getId() == id) {
             return new ReturnT<String>(ReturnT.FAIL.getCode(), I18nUtil.getString("user_update_loginuser_limit"));
         }
@@ -156,34 +160,28 @@ public class JobUserController {
                                      @RequestParam("password") String password,
                                      @RequestParam("oldPassword") String oldPassword){
 
-        // valid
-        if (oldPassword==null || oldPassword.trim().length()==0){
-            return new ReturnT<String>(ReturnT.FAIL.getCode(), I18nUtil.getString("system_please_input") + I18nUtil.getString("change_pwd_field_oldpwd"));
-        }
+        // valid password
         if (password==null || password.trim().length()==0){
-            return new ReturnT<String>(ReturnT.FAIL.getCode(), I18nUtil.getString("system_please_input") + I18nUtil.getString("change_pwd_field_oldpwd"));
+            return new ReturnT<String>(ReturnT.FAIL.getCode(), "密码不可为空");
         }
         password = password.trim();
         if (!(password.length()>=4 && password.length()<=20)) {
             return new ReturnT<String>(ReturnT.FAIL_CODE, I18nUtil.getString("system_lengh_limit")+"[4-20]" );
         }
-
         // md5 password
-        String md5OldPassword = DigestUtils.md5DigestAsHex(oldPassword.getBytes());
-        String md5Password = DigestUtils.md5DigestAsHex(password.getBytes());
-
-        // valid old pwd
-        XxlJobUser loginUser = PermissionInterceptor.getLoginUser(request);
+        String md5OldPassword = MD5Util.md5Twice(oldPassword);
+        String md5Password = MD5Util.md5Twice(password);
+        // update pwd
+        XxlJobUser loginUser = (XxlJobUser) request.getAttribute(LoginService.LOGIN_IDENTITY_KEY);
+        // do write
         XxlJobUser existUser = xxlJobUserDao.loadByUserName(loginUser.getUsername());
         if (!md5OldPassword.equals(existUser.getPassword())) {
             return new ReturnT<String>(ReturnT.FAIL.getCode(), I18nUtil.getString("change_pwd_field_oldpwd") + I18nUtil.getString("system_unvalid"));
         }
-
-        // write new
         existUser.setPassword(md5Password);
         xxlJobUserDao.update(existUser);
-
         return ReturnT.SUCCESS;
     }
+
 
 }

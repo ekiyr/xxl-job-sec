@@ -1,8 +1,8 @@
 package com.xxl.job.admin.core.util;
 
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Cookie.Util
@@ -25,7 +25,7 @@ public class CookieUtil {
 	 * @param ifRemember 
 	 */
 	public static void set(HttpServletResponse response, String key, String value, boolean ifRemember) {
-		int age = ifRemember?COOKIE_MAX_AGE:-1;
+		int age = ifRemember?COOKIE_MAX_AGE:8*60*60;
 		set(response, key, value, null, COOKIE_PATH, age, true);
 	}
 

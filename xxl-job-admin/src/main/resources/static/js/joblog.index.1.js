@@ -95,33 +95,35 @@ $(function() {
 					{
 						"data": 'jobId',
 						"visible" : true,
-                        "width":'10%',
-						"render": function ( data, type, row ) {
-
-							var jobhandler = '';
-                            if (row.executorHandler) {
-                                jobhandler = "<br>JobHandler：" + row.executorHandler;
-                            }
-
-							var temp = '';
-							temp += I18n.joblog_field_executorAddress + '：' + (row.executorAddress?row.executorAddress:'');
-							temp += jobhandler;
-							temp += '<br>'+ I18n.jobinfo_field_executorparam +'：' + row.executorParam;
-
-							return '<a class="logTips" href="javascript:;" >'+ row.jobId +'<span style="display:none;">'+ temp +'</span></a>';
-						}
+                        "width":'8%',
+                        "className":'text-center',
+//						"render": function ( data, type, row ) {
+//
+//							var jobhandler = '';
+//                            if (row.executorHandler) {
+//                                jobhandler = "<br>JobHandler：" + row.executorHandler;
+//                            }
+//
+//							var temp = '';
+//							temp += I18n.joblog_field_executorAddress + '：' + (row.executorAddress?row.executorAddress:'');
+//							temp += jobhandler;
+//							temp += '<br>'+ I18n.jobinfo_field_executorparam +'：' + row.executorParam;
+//
+//							return '<a class="logTips" href="javascript:;" >'+ row.jobId +'<span style="display:none;">'+ temp +'</span></a>';
+//						}
 					},
+					{ "data": 'jobDesc', "visible" : true,"width":'15%',},
 					{ "data": 'jobGroup', "visible" : false},
 					{
 						"data": 'triggerTime',
-                        "width":'20%',
+                        "width":'12%',
 						"render": function ( data, type, row ) {
 							return data?moment(data).format("YYYY-MM-DD HH:mm:ss"):"";
 						}
 					},
 					{
 						"data": 'triggerCode',
-                        "width":'10%',
+                        "width":'8%',
 						"render": function ( data, type, row ) {
 							var html = data;
 							if (data == 200) {
@@ -143,14 +145,14 @@ $(function() {
 					},
 	                { 
 	                	"data": 'handleTime',
-                        "width":'20%',
+                        "width":'12%',
 	                	"render": function ( data, type, row ) {
 	                		return data?moment(data).format("YYYY-MM-DD HH:mm:ss"):"";
 	                	}
 	                },
 	                {
 						"data": 'handleCode',
-                        "width":'10%',
+                        "width":'8%',
 						"render": function ( data, type, row ) {
                             var html = data;
                             if (data == 200) {
@@ -175,7 +177,7 @@ $(function() {
 	                {
 						"data": 'handleMsg' ,
 						"bSortable": false,
-                        "width":'10%',
+                        "width":'12%',
 	                	"render": function ( data, type, row ) {
 	                		// better support expression or string, not function
 	                		return function () {

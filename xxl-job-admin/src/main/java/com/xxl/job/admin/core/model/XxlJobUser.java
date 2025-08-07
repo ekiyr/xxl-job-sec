@@ -12,6 +12,8 @@ public class XxlJobUser {
 	private String password;		// 密码
 	private int role;				// 角色：0-普通用户、1-管理员
 	private String permission;	// 权限：执行器ID列表，多个逗号分割
+	private String loginIp;     //不存库，登陆IP，Token使用
+	private long expireTime;    //不存库，到期时间
 
 	public int getId() {
 		return id;
@@ -51,6 +53,22 @@ public class XxlJobUser {
 
 	public void setPermission(String permission) {
 		this.permission = permission;
+	}
+
+	public String getLoginIp() {
+		return loginIp;
+	}
+
+	public void setLoginIp(String loginIp) {
+		this.loginIp = loginIp;
+	}
+
+	public long getExpireTime() {
+		return expireTime;
+	}
+
+	public void setExpireTime(long expireTime) {
+		this.expireTime = expireTime;
 	}
 
 	// plugin
