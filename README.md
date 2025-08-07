@@ -9,40 +9,20 @@ XXL-JOB 是一个开源且免费项目，其正在进行的开发完全得益于
 XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。
 
 ## 本地开发升级 Development
-### 20241030升级- 版本100.0.1-SNAPSHOT
-- 1、登陆页面增加图形验证码
-- 2、登陆token安全升级采取AES加密
-- 3、管理端与执行器之间的交互报文采取SM4加密，token使用原xxl.job.accessToken，更换时需注意满足对称加密要求。牺牲一部分性能提升安全性
-- 4、执行日志表增加job_desc,并页面展示，脱敏执行IP及bean等
-- 5、用户密码修改为两次MD5
-- 6、避免RCE漏洞，禁用脚本任务，仅支持bean
-- 7、数据脚本使用：/doc/db/tables_xxl_job_20241030.sql
-- 8、xxl-job-core 引用如下：
+### 20250807- 版本修改为242.1-SNAPSHOT
+- 1、增加用户安全验证。登陆页面增加图形验证码；登陆token安全升级采取AES加密；用户密码存储修改为两次MD5。
+- 2、增强管理端与执行器的安全，执行器新建时增加自动生成的accessToken。管理端与执行器之间的交互报文采取SM4加密，并增加报文时间有效性校验（60秒内有效）。
+- 3、增加任务权限管控限制，管理员用户可以管理全部的任务，普通用户只能管理分配的执行器下的任务。
+- 4、xxl-job-core 增加AdminJobInfoClient处理新增任务、更新任务、启动/停止/删除任务、手动触发一次任务执行接口。
+- 5、执行日志表增加job_desc,并页面展示，脱敏执行IP及bean等
+- 6、增加配置xxl.job.glue.type.safe=true，避免RCE漏洞，禁用脚本任务，仅支持bean
+- 7、数据脚本使用：/doc/db/tables_xxl_job_20250725.sql。
+- 8、xxl-job-core，需发布到Maven私服，引用如下：
   ```xml
     <dependency>
       <groupId>com.xuxueli</groupId>
       <artifactId>xxl-job-core</artifactId>
-      <version>100.0.1-SNAPSHOT</version>
-    </dependency>
-  ```
-
-### 20250725升级- 版本100.1.0-SNAPSHOT
-- 1、增强对接安全性。针对新增的执行器，自动生成对接的token，并使用token进行SM4加密通信。
-- 2、由版本100.0.1-SNAPSHOT升级到100.1.0-SNAPSHOT，变更表xxl_job_group，增加字段app_secret。
-  ```sql
-    ALTER TABLE xxl_job_group ADD app_secret varchar(128) NULL DEFAULT '' COMMENT '访问密钥' AFTER app_name;
-    ALTER TABLE xxl_job_group ADD CONSTRAINT app_name_unk UNIQUE KEY (app_name);
-  ```
-- 3、兼容100.0.1-SNAPSHOT版本，原已有的执行器默认使用公共的token进行通信（xxl.job.accessToken）
-- 4、增加任务权限管控限制，管理员用户可以管理全部的任务，普通用户只能管理分配的执行器下的任务。
-- 5、xxl-job-core 增加AdminJobInfoClient处理新增任务、更新任务、启动/停止/删除任务、手动触发一次任务执行接口。
-- 6、数据脚本初始化脚本使用：/doc/db/tables_xxl_job_20250725.sql。
-- 7、xxl-job-core 改为的xxl-job-sec-core，maven 引用如下：
-  ```xml
-    <dependency>
-      <groupId>com.xuxueli</groupId>
-      <artifactId>xxl-job-sec-core</artifactId>
-      <version>100.1.0-SNAPSHOT</version>
+      <version>242.1-SNAPSHOT</version>
     </dependency>
   ```
 
