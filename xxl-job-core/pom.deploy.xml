@@ -133,14 +133,14 @@
     <!-- maven 私服 -->
     <distributionManagement>
         <repository>
-            <id>hesuan-nexus-release</id>
-            <name>hesuan-release</name>
-            <url>http://10.7.128.69:8181/repository/releases/</url>
+            <id>nexus-release</id>
+            <name>release</name>
+            <url>http://xxxx.com:8080/repository/releases/</url>
         </repository>
         <snapshotRepository>
-            <id>hesuan-nexus-snapshot</id>
-            <name>hesuan-snapshot</name>
-            <url>http://10.7.128.69:8181/repository/snapshots/</url>
+            <id>nexus-snapshot</id>
+            <name>snapshot</name>
+            <url>http://xxxx.com:8080/repository/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
