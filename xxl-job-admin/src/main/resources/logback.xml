@@ -21,7 +21,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.xxl.job" level="DEBUG" additivity="true"/>
+    <logger name="com.xxl.job" level="INFO" additivity="true"/>
 
     <logger name="com.xxl.job.admin.dao" level="INFO" additivity="true"/>
 
