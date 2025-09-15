@@ -13,13 +13,17 @@ public class ExecutorBizClient implements ExecutorBiz {
 
     public ExecutorBizClient() {
     }
-    public ExecutorBizClient(String addressUrl, String accessToken) {
+    public ExecutorBizClient(String addressUrl, String accessToken, int timeout) {
         this.addressUrl = addressUrl;
         this.accessToken = accessToken;
 
         // valid
         if (!this.addressUrl.endsWith("/")) {
             this.addressUrl = this.addressUrl + "/";
+        }
+        //配置值为1到30秒
+        if (!(this.timeout >=1 && this.timeout <= 20)) {
+            this.timeout = 5;
         }
     }
 
