@@ -195,31 +195,31 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- docker -->
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.4.13</version>
-				<configuration>
-					<!-- made of '[a-z0-9-_.]' -->
-					<repository>${project.artifactId}</repository>
-					<tag>${project.version}</tag>
-					<contextDirectory>${project.basedir}</contextDirectory>
-					<dockerfile>${project.basedir}/Dockerfile</dockerfile>
-					<buildArgs>
-						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-					</buildArgs>
-				</configuration>
-				<executions>
-					<execution>
-						<id>build-docker-image</id>
-						<phase>package</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!--			&lt;!&ndash; docker &ndash;&gt;-->
+<!--			<plugin>-->
+<!--				<groupId>com.spotify</groupId>-->
+<!--				<artifactId>dockerfile-maven-plugin</artifactId>-->
+<!--				<version>1.4.13</version>-->
+<!--				<configuration>-->
+<!--					&lt;!&ndash; made of '[a-z0-9-_.]' &ndash;&gt;-->
+<!--					<repository>${project.artifactId}</repository>-->
+<!--					<tag>${project.version}</tag>-->
+<!--					<contextDirectory>${project.basedir}</contextDirectory>-->
+<!--					<dockerfile>${project.basedir}/Dockerfile</dockerfile>-->
+<!--					<buildArgs>-->
+<!--						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>-->
+<!--					</buildArgs>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>build-docker-image</id>-->
+<!--						<phase>package</phase>-->
+<!--						<goals>-->
+<!--							<goal>build</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 
 		</plugins>
 	</build>
